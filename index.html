@@ -10,8 +10,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Familjen+Grotesk:wght@400;500;700&family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-<!-- ===== FLODESK PART 1: if Flodesk gives you code for the <head>, paste it here ===== -->
-
+<!-- ===== FLODESK PART 1: Flodesk loader ===== -->
+<script>
+  (function(w, d, t, h, s, n) {
+    w.FlodeskObject = n;
+    var fn = function() {
+      (w[n].q = w[n].q || []).push(arguments);
+    };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true;
+    sm.type = 'module';
+    sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true;
+    sn.noModule = true;
+    sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+</script>
 <!-- ===== END FLODESK PART 1 ===== -->
 </head>
 <body>
@@ -71,13 +91,13 @@
           <p>Pop your email in and I’ll show you the full thing: hours a month, hours a year, and what that time is worth.</p>
 
           <!-- ===== FLODESK PART 2: paste your Flodesk inline form embed code here ===== -->
-          <p class="small">[<div id="fd-form-6af2e0770cd8fdde007e000b"></div>
-<script>
-  window.fd('form', {
-    formId: '6af2e0770cd8fdde007e000b',
-    containerEl: '#fd-form-6af2e0770cd8fdde007e000b'
-  });
-</script>]</p>
+          <div id="fd-form-6af2e0770cd8fdde007e000b"></div>
+          <script>
+            window.fd('form', {
+              formId: '6af2e0770cd8fdde007e000b',
+              containerEl: '#fd-form-6af2e0770cd8fdde007e000b'
+            });
+          </script>
           <!-- ===== END FLODESK PART 2 ===== -->
 
         </div>
