@@ -91,23 +91,12 @@ input[type=range]:focus-visible { outline: 3px solid var(--berry); outline-offse
 footer { margin-top: 32px; font-size: .9rem; opacity: .75; }
 
 /* Make the Flodesk form use the brand fonts */
-#fd-form-6af2e0770cd8fdde007e000b,
-#fd-form-6af2e0770cd8fdde007e000b * {
+#fd-form-6af2e686382718fa76673730,
+#fd-form-6af2e686382718fa76673730 * {
   font-family: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif !important;
 }
-#fd-form-6af2e0770cd8fdde007e000b button,
-#fd-form-6af2e0770cd8fdde007e000b [type="submit"] {
+#fd-form-6af2e686382718fa76673730 button,
+#fd-form-6af2e686382718fa76673730 [type="submit"] {
   font-weight: 700 !important;
 }
 .consent { margin-top: 14px; text-align: center; }
-
-/* Hide the empty Flodesk heading area */
-#fd-form-6af2e0770cd8fdde007e000b h1,
-#fd-form-6af2e0770cd8fdde007e000b h2,
-#fd-form-6af2e0770cd8fdde007e000b h3,
-#fd-form-6af2e0770cd8fdde007e000b [class*="title"],
-#fd-form-6af2e0770cd8fdde007e000b [class*="Title"],
-#fd-form-6af2e0770cd8fdde007e000b [class*="header"],
-#fd-form-6af2e0770cd8fdde007e000b [class*="heading"] {
-  display: none !important;
-}
