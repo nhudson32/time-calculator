@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Instagram bill | Nina Hudson</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Familjen+Grotesk:wght@400;500;700&family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Here’s your bill.</h1>
+    <p class="lede" id="lede">This is what keeping your Instagram up to date would cost you, every month, in your time.</p>
+  </header>
+
+  <div style="max-width:520px">
+    <div class="receipt">
+      <p class="r-title">Your Instagram</p>
+      <p class="r-sub">Monthly bill for a profile that’s kept up, in your time</p>
+      <dl class="r-rows">
+        <div class="r-row"><dt>Deciding what to post</dt><dd id="r-ideas"></dd></div>
+        <div class="r-row"><dt>Captions</dt><dd id="r-caption"></dd></div>
+        <div class="r-row"><dt>Design and editing</dt><dd id="r-design"></dd></div>
+        <div class="r-row"><dt>Reels</dt><dd id="r-reels"></dd></div>
+        <div class="r-row"><dt>Everything else</dt><dd id="r-faff"></dd></div>
+      </dl>
+      <div class="total"><span>Total a month</span><span class="big" id="r-month"></span></div>
+      <ul class="extra">
+        <li><span>Worth, at your rate</span><strong id="r-money"></strong></li>
+        <li><span>A year</span><strong id="r-year"></strong></li>
+        <li><span>Full working weeks a year</span><strong id="r-weeks"></strong></li>
+      </ul>
+      <p class="verdict aside" id="r-verdict"></p>
+    </div>
+  </div>
+
+  <section class="after">
+    <h2>That time could go back to your clients.</h2>
+    <p id="compare"></p>
+    <div class="btns">
+      <!-- Swap these two links for your apply page and services page -->
+      <a class="btn primary" href="https://nina-hudson.com">Apply to work with me</a>
+      <a class="btn" href="https://nina-hudson.com">See how it works</a>
+    </div>
+  </section>
+
+  <p style="margin-top:28px"><a href="index.html" style="color:inherit">Change my answers</a></p>
+  <footer>Nina Hudson. Content for service businesses whose work is better than their Instagram.</footer>
+</div>
+
+<script src="calc.js"></script>
+<script>
+(function () {
+  var saved = NH.load();
+  if (!saved) {
+    document.getElementById("lede").textContent = "Fill in the calculator first and your bill will show up here.";
+  }
+  NH.render(Object.assign({}, NH.DEFAULTS, saved || {}));
+})();
+</script>
+</body>
+</html>

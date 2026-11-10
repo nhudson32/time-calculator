@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What’s your Instagram costing you? | Nina Hudson</title>
+<meta name="description" content="A two-minute calculator for service business owners: how much time your Instagram really takes, and what that time is worth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Familjen+Grotesk:wght@400;500;700&family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- ===== FLODESK PART 1: if Flodesk gives you code for the <head>, paste it here ===== -->
+
+<!-- ===== END FLODESK PART 1 ===== -->
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>What’s your Instagram actually costing you?</h1>
+    <p class="lede">Tell me how often you’d like to be posting, and how long each post really takes you. Be honest. Nobody’s watching.</p>
+  </header>
+
+  <div class="grid">
+    <form id="calc" onsubmit="return false">
+      <fieldset>
+        <legend>Your posts</legend>
+        <div class="q"><div class="q-top"><label for="posts">Posts a week you’d like to be doing</label><output id="o-posts"></output></div>
+          <input type="range" id="posts" min="0" max="7" step="1"></div>
+        <div class="q"><div class="q-top"><label for="ideas">Deciding what to post, per post</label><output id="o-ideas"></output></div>
+          <input type="range" id="ideas" min="0" max="90" step="5"></div>
+        <div class="q"><div class="q-top"><label for="caption">Writing the caption, per post</label><output id="o-caption"></output></div>
+          <input type="range" id="caption" min="0" max="90" step="5"></div>
+        <div class="q"><div class="q-top"><label for="design">Designing or editing, per post</label><output id="o-design"></output></div>
+          <input type="range" id="design" min="0" max="120" step="5"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Your reels</legend>
+        <div class="q"><div class="q-top"><label for="reels">Reels a week you’d like to be doing</label><output id="o-reels"></output></div>
+          <input type="range" id="reels" min="0" max="5" step="1"></div>
+        <div class="q"><div class="q-top"><label for="reelTime">Filming and editing, per reel</label><output id="o-reelTime"></output></div>
+          <input type="range" id="reelTime" min="0" max="180" step="5"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Everything else</legend>
+        <div class="q"><div class="q-top"><label for="faff">Scheduling, replying and staring at a blank screen, a week</label><output id="o-faff"></output></div>
+          <input type="range" id="faff" min="0" max="180" step="5"></div>
+        <div class="q"><label for="rate">What’s an hour of your time worth?</label>
+          <div class="rate"><span aria-hidden="true">€</span><input type="number" id="rate" min="0" step="5" inputmode="numeric"></div>
+          <p class="hint">Roughly what you charge clients per hour. A guess is fine.</p></div>
+      </fieldset>
+    </form>
+
+    <div class="receipt-col">
+      <div class="receipt locked">
+        <p class="r-title">Your Instagram</p>
+        <p class="r-sub">Monthly bill for a profile that’s kept up, in your time</p>
+        <div class="numbers" aria-hidden="true">
+          <dl class="r-rows">
+            <div class="r-row"><dt>Deciding what to post</dt><dd id="r-ideas"></dd></div>
+            <div class="r-row"><dt>Captions</dt><dd id="r-caption"></dd></div>
+            <div class="r-row"><dt>Design and editing</dt><dd id="r-design"></dd></div>
+            <div class="r-row"><dt>Reels</dt><dd id="r-reels"></dd></div>
+            <div class="r-row"><dt>Everything else</dt><dd id="r-faff"></dd></div>
+          </dl>
+          <div class="total"><span>Total a month</span><span class="big" id="r-month"></span></div>
+        </div>
+
+        <div class="gate">
+          <h2>Your bill’s ready.</h2>
+          <p>Pop your email in and I’ll show you the full thing: hours a month, hours a year, and what that time is worth.</p>
+
+          <!-- ===== FLODESK PART 2: paste your Flodesk inline form embed code here ===== -->
+          <p class="small">[Flodesk form goes here]</p>
+          <!-- ===== END FLODESK PART 2 ===== -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Nina Hudson. Content for service businesses whose work is better than their Instagram.</footer>
+</div>
+
+<script src="calc.js"></script>
+<script>
+(function () {
+  var keys = ["posts", "ideas", "caption", "design", "reels", "reelTime", "faff", "rate"];
+  var v = Object.assign({}, NH.DEFAULTS, NH.load() || {});
+
+  keys.forEach(function (k) {
+    var el = document.getElementById(k);
+    el.value = v[k];
+    el.addEventListener("input", function () {
+      var n = parseFloat(el.value);
+      v[k] = isNaN(n) || n < 0 ? 0 : n;
+      update();
+    });
+  });
+
+  function update() {
+    document.getElementById("o-posts").textContent = v.posts;
+    document.getElementById("o-reels").textContent = v.reels;
+    ["ideas", "caption", "design", "reelTime", "faff"].forEach(function (k) {
+      document.getElementById("o-" + k).textContent = NH.mins(v[k]);
+    });
+    NH.render(v);
+    NH.save(v);
+  }
+  update();
+})();
+</script>
+</body>
+</html>
